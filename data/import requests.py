@@ -13,6 +13,7 @@ def get_block(input):
 
 count = 0
 headers = []
+start = 12854
 with open("block_tree.csv", 'w') as new:
     writer = csv.writer(new)
     with open("tree_data") as raw:
@@ -28,6 +29,9 @@ with open("block_tree.csv", 'w') as new:
             new_line = row
             new_line.append(get_block(row))
             writer.writerow(new_line)
+            count += 1
+            if (count % 1000 == 0):
+                print(count)
         raw.close()
     new.close()
 
@@ -43,6 +47,5 @@ def parse_line(str):
     strs = str.split(',')
 
     return (strs[1], strs[0])
-
 
 
