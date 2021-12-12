@@ -11,14 +11,15 @@ def get_block(input):
     block_fips = res_dict.get("block_fips")
     return block_fips
 
+print("Starting")
 count = 0
 headers = []
 start = 12854
-with open("block_tree.csv", 'w') as new:
+with open("harris_block_tree.csv", 'w') as new:
     writer = csv.writer(new)
-    with open("tree_data") as raw:
+    with open("harris_trees.csv") as raw:
         tree_reader = csv.reader(raw)
-        
+
         for row in tree_reader:
             if (count == 0):
                 headers = row
@@ -36,7 +37,7 @@ with open("block_tree.csv", 'w') as new:
     new.close()
 
 
-            
+
 
 
 def parse_line(str):
@@ -47,5 +48,3 @@ def parse_line(str):
     strs = str.split(',')
 
     return (strs[1], strs[0])
-
-
